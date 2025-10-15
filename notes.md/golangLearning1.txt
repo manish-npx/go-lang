@@ -1,0 +1,194 @@
+==============================
+🏁 GOLANG FUNDAMENTALS CHEATSHEET
+==============================
+
+👨‍💻 For JavaScript Developers Learning Go
+
+
+==============================
+📦 BASIC STRUCTURE
+==============================
+
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, Go!")
+}
+
+- 'package main' is required for executables.
+- 'import' loads standard or custom packages.
+- 'func main()' is the program entry point.
+
+==============================
+📦 VARIABLES & TYPES
+==============================
+
+🌟 Declaring Variables:
+------------------------
+var name string = "Manish"
+age := 30           // Type inferred (inside functions)
+const PI = 3.14     // Constants
+
+📦 Common Types:
+------------------------
+string      => "hello"
+int         => 1, 42, -5
+float64     => 3.14, 0.01
+bool        => true / false
+rune        => 'A', '₹' (single characters)
+
+==============================
+🔁 LOOPS
+==============================
+
+Basic for loop:
+------------------------
+for i := 0; i < 5; i++ {
+    fmt.Println(i)
+}
+
+While-style loop:
+------------------------
+i := 0
+for i < 5 {
+    fmt.Println(i)
+    i++
+}
+
+Infinite loop:
+------------------------
+for {
+    fmt.Println("Looping...")
+    break
+}
+
+Loop over array/slice:
+------------------------
+nums := []int{10, 20, 30}
+for index, value := range nums {
+    fmt.Println(index, value)
+}
+
+
+==============================
+🔧 FUNCTIONS
+==============================
+
+Basic function:
+------------------------
+func greet(name string) string {
+    return "Hello " + name
+}
+
+Multiple return values:
+------------------------
+func math(a, b int) (int, int) {
+    return a + b, a - b
+}
+
+No return:
+------------------------
+func sayHi() {
+    fmt.Println("Hi!")
+}
+
+Anonymous function (like JS arrow functions):
+------------------------
+func() {
+    fmt.Println("Anonymous")
+}()
+
+
+==============================
+🧱 ARRAYS, SLICES, MAPS
+==============================
+
+Array:
+------------------------
+var arr [3]int = [3]int{1, 2, 3}
+
+Slice (like JS arrays):
+------------------------
+nums := []int{4, 5, 6}
+nums = append(nums, 7)
+
+Map (like JS objects):
+------------------------
+person := map[string]string{
+    "name": "Manish",
+    "lang": "Go",
+}
+
+fmt.Println(person["name"])
+
+
+==============================
+🧠 TIPS FOR JS DEVELOPERS
+==============================
+
+- Go is statically typed (no `var x = "string"` turning into a number).
+- No classes — Go uses structs and interfaces.
+- No `undefined` — zero values instead.
+- `:=` is like `let` or `const` with type inference.
+- Go favors composition over inheritance.
+- No exceptions — use error returns.
+
+==============================
+📌 STRUCTS & ERROR HANDLING
+==============================
+
+Struct:
+------------------------
+type User struct {
+    name string
+    age  int
+}
+
+user := User{name: "Manish", age: 25}
+fmt.Println(user.name)
+
+Error handling:
+------------------------
+func divide(a, b int) (int, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("cannot divide by zero")
+    }
+    return a / b, nil
+}
+
+
+==============================
+📦 PACKAGES & MODULES
+==============================
+
+Initialize a module:
+------------------------
+go mod init your-module-name
+
+Install a package:
+------------------------
+go get github.com/some/package
+
+Import and use:
+------------------------
+import "github.com/some/package"
+
+==============================
+🚀 QUICK BUILD & RUN
+==============================
+
+Run Go file:
+------------------------
+go run main.go
+
+Build executable:
+------------------------
+go build
+
+==============================
+🎉 END OF CHEATSHEET
+==============================
+
+Happy coding in Go! 🚀

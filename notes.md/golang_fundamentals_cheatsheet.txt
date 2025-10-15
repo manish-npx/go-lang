@@ -1,0 +1,260 @@
+# GO FUNDAMENTALS CHEATSHEET (JS to GO)
+# -------------------------------------------------------------
+# A quick reference for core Go concepts, especially helpful for JavaScript developers.
+#
+# KEY DIFFERENCES:
+# 1. Static Typing: Go is strictly typed (no 'var' for everything).
+# 2. Error Handling: Errors are values, not exceptions (no try/catch).
+# 3. Concurrency: Built-in with Goroutines and Channels.
+# 4. Imports: Uses packages/modules instead of 'require'/'import'.
+# -------------------------------------------------------------
+
+## 1. STRUCTURE AND TOOLS
+
+### A. Program Structure
+package main
+
+import (
+    "fmt" // For printing (like console.log)
+    "errors" // For creating simple errors
+)
+
+// Main entry point (like the top level of a Node.js script)
+func main() {
+    // Code execution starts here
+}
+
+### B. Tooling (Terminal Commands)
+# Setup & Formatting
+go install <package>      # Download and install a package
+go mod init <name>        # Initialize a new module (like npm init)
+go mod tidy               # Cleans up dependencies
+go fmt                    # Auto-formats your code (USE IT!)
+
+# Running & Building
+go run main.go            # Compile and run (good for development)
+go build                  # Compile into a binary executable file
+go test                   # Run unit tests
+
+## 2. VARIABLES AND TYPES (Strictly Typed)
+
+### A. Variable Declaration
+// GO requires explicit types or inference (no 'var' for generic variables)
+
+// 1. Long Declaration (Default Zero Value)
+var count int                 // Zero value is 0
+var name string               // Zero value is ""
+var isReady bool              // Zero value is false
+var user = "Alice"            // Type inferred as string
+
+// 2. Short Declaration (MOST COMMON - Used inside functions)
+age := 30                     // Type inferred as int (like JS 'const/let')
+price := 99.99                // Type inferred as float64
+
+// 3. Constant
+const PI = 3.14159            // Must be set at compile time
+
+### B. Basic Types (No loose equivalence like JS)
+// Numbers: int (default for integers), int8, int64, float32, float64 (default for floats)
+// Boolean: bool
+// String: string (UTF-8 encoded)
+
+## 3. CONTROL FLOW (No parentheses needed for conditions)
+
+### A. If/Else (No parentheses on condition!)
+score := 95
+if score > 90 {
+    // Block required
+} else if score > 70 {
+    // Another block
+} else {
+    // Default block
+}
+
+// IF with short statement (variable scoped to if/else blocks only)
+if result, err := checkFile(); err != nil {
+    fmt.Println("Error:", err)
+} else {
+    fmt.Println("Result:", result)
+}
+
+### B. For Loop (Only one loop keyword!)
+// 1. Traditional Loop (Like JS for(;;))
+for i := 0; i < 5; i++ {
+    // ...
+}
+
+// 2. While Loop Equivalent (Like JS while())
+n := 1
+for n < 100 {
+    n *= 2
+}
+
+// 3. For-Range (Iterating over collections - Like JS for..of)
+colors := []string{"red", "green", "blue"}
+for index, value := range colors {
+    fmt.Printf("%d: %s\n", index, value)
+}
+// To ignore the index (like JS for..of without index)
+for _, value := range colors {
+    // ...
+}
+
+### C. Switch
+day := "Mon"
+switch day {
+case "Sat", "Sun":
+    // Case logic
+case "Mon":
+    // Default Go switch does NOT fall through (unlike JS without break)
+default:
+    // ...
+}
+
+## 4. FUNCTIONS AND ERRORS
+
+### A. Function Declaration
+// JS: function add(a, b) { return a + b; }
+func add(a int, b int) int {
+    return a + b
+}
+
+// Parameters can share type
+func subtract(a, b int) int {
+    return a - b
+}
+
+### B. Multiple Return Values (COMMON GO IDIOM)
+// Go functions often return a value AND an error (or a value AND a bool)
+func safeDivide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, errors.New("cannot divide by zero")
+    }
+    return a / b, nil // nil means no error
+}
+
+// How to call and handle:
+result, err := safeDivide(10.0, 2.0)
+if err != nil { // IMPORTANT: Check the error first!
+    // Handle error (e.g., log, return)
+}
+// If no error, proceed with result
+fmt.Println(result)
+
+### C. Defer, Panic, Recover
+// Defer: Schedules a function to run just before the surrounding function returns.
+// Used for cleanup (closing files, database connections).
+func connect() {
+    // This runs LAST, even if an error occurs
+    defer fmt.Println("Connection closed.")
+    fmt.Println("Connected.")
+    // ...
+}
+
+## 5. COLLECTIONS (Arrays, Slices, Maps)
+
+### A. Arrays (Fixed Size - Rarely Used)
+var arr [3]int                  // Fixed size of 3 integers
+
+### B. Slices (Dynamic Size - MOST COMMON - Like JS Arrays)
+// A slice is a flexible view into an array.
+s := []string{"a", "b", "c"}    // Slice literal
+s = append(s, "d", "e")         // Append grows the underlying array
+fmt.Println(s)                  // [a b c d e]
+
+// Creating with make (type, length, capacity)
+list := make([]int, 0, 5)       // Length 0, Capacity 5 (pre-allocated space)
+
+// Slicing (creates a view)
+subset := s[1:4]                // Elements from index 1 (inclusive) to 4 (exclusive)
+
+### C. Maps (Key-Value Pairs - Like JS Objects/Maps)
+// Keys must be comparable (string, int, struct, etc.)
+// Values can be any type.
+m := map[string]int{
+    "apple": 1,
+    "banana": 2,
+}
+m["orange"] = 3             // Add/update
+
+// The 'Comma Ok' Idiom (Checking if a key exists)
+value, exists := m["apple"]
+if exists {
+    fmt.Println("Found:", value)
+}
+
+delete(m, "apple")          // Deleting a key
+
+## 6. STRUCTS AND METHODS (Classes Equivalent)
+
+### A. Struct (Data Grouping - Like JS Class Properties/Typescript Interfaces)
+type User struct {
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+// Creating a struct instance
+u := User{
+    FirstName: "Alex",
+    LastName:  "Smith",
+    Age:       25,
+}
+
+### B. Methods (Functions attached to a struct)
+// (u User) is the 'Receiver'. This makes it a method on the User type.
+// Value Receiver: Works on a COPY of the struct.
+func (u User) FullName() string {
+    return u.FirstName + " " + u.LastName
+}
+
+// Pointer Receiver: Works on the ORIGINAL struct. Use for modification.
+func (u *User) IncrementAge() {
+    u.Age++ // u is a pointer, but Go lets you access fields directly
+}
+
+// Calling methods
+fmt.Println(u.FullName())
+u.IncrementAge() // Now u.Age is 26
+
+### C. Pointers (Passing by Reference)
+// & (Address-of): Get the memory address of a variable
+// * (Dereference): Get the value stored at a memory address
+
+i := 10
+p := &i      // p is a pointer to i (type *int)
+*p = 20      // Changes the value of i through the pointer
+fmt.Println(i) // Output: 20
+
+## 7. INTERFACES (Polymorphism)
+
+// Go interfaces are implicitly satisfied.
+// If a type implements all methods of an interface, it satisfies it.
+
+type Speaker interface {
+    Speak() string
+}
+
+type Dog struct {
+    Name string
+}
+// Dog implicitly satisfies Speaker because it implements Speak()
+func (d Dog) Speak() string {
+    return "Woof! " + d.Name
+}
+
+type Person struct {
+    Name string
+}
+// Person implicitly satisfies Speaker
+func (p Person) Speak() string {
+    return "Hello, I am " + p.Name
+}
+
+func announce(s Speaker) {
+    fmt.Println(s.Speak())
+}
+
+// Usage:
+announce(Dog{Name: "Max"})    // Works
+announce(Person{Name: "Jen"}) // Works
