@@ -1,0 +1,17 @@
+# .air.toml
+
+# Binary name
+bin = "tmp/main"
+
+# Main entry
+cmd = "go run main.go"
+
+# Watch these folders
+include_dir = ["."]
+exclude_dir = ["tmp", "vendor", "node_modules"]
+
+# File extensions to watch
+include_ext = ["go", "tpl", "tmpl", "html"]
+
+# Exclude some files
+exclude_file = []
