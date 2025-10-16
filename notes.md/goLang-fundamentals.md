@@ -1,6 +1,6 @@
 # 🧠 Golang Fundamentals Guide for JS Developers
 
-Welcome, Manish! This is your end‑to‑end Go learning guide, tailored for someone coming from **JavaScript/TypeScript + Node/Express**. It’s optimized for **VS Code** with:
+Welcome, M! This is an end‑to‑end Go learning guide, tailored for someone coming from **JavaScript/TypeScript + Node/Express**. It’s optimized for **VS Code** with:
 
 - ✅ Clickable **Table of Contents**
 - ✅ **Syntax‑highlighted** Go code blocks (` ```go `)
