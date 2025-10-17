@@ -11,13 +11,11 @@ import (
 const CONTENT_TYPE = "Content-Type"
 const APPLICATION_JSON = "application/json"
 
-// user slice having userData
 var users = []models.User{
 	{ID: 1, Name: "Alice", Email: "alice@example.com"},
 	{ID: 2, Name: "Bob", Email: "bob@example.com"},
 }
 
-// get user  w=write r=request
 func GetUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set(CONTENT_TYPE, APPLICATION_JSON)
 	// Encode (convert) the users slice into JSON and send
@@ -44,7 +42,6 @@ func GetUserByID(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "User not found", http.StatusNotFound)
 }
 
-// CreateUser handles POST /users
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	// Create a variable to hold the new user data from the request body
 	var newUser models.User
