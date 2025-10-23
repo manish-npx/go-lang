@@ -1,7 +1,9 @@
 {
   // 🧠 Spell checker
-  "cSpell.words": ["manish", "nums"],
-
+  "cSpell.words": [
+    "manish",
+    "nums"
+  ],
   // 🖼️ UI and Themes
   "workbench.colorTheme": "Tokyo Night AltSynt",
   "workbench.iconTheme": "catppuccin-macchiato",
@@ -19,18 +21,24 @@
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor"
   },
-
+  //fullscreen
+  "window.menuBarVisibility": "visible",
+  "window.titleBarStyle": "custom",
+  "window.nativeFullScreen": false,
+  //
+  //bracketcolor2
+  //"editor.guides.bracketPairs": true, // show guides for bracket pairs
+  // shows vertical line connecting start/end brackets
+  //
   // 💅 Custom UI CSS
   "custom-ui-style.font.sansSerif": "'IBM Plex Mono', 'SF Mono', Menlo, Monaco, monospace",
   "custom-ui-style.stylesheet": {},
-
   // 🎨 Color Customization
   "workbench.colorCustomizations": {
     "terminal.background": "#1A1B26", // Tokyo Night background
     "terminal.foreground": "#C0CAF5",
     "terminalCursor.background": "#C0CAF5",
     "terminalCursor.foreground": "#C0CAF5",
-
     "terminal.ansiBlack": "#414868",
     "terminal.ansiRed": "#F7768E",
     "terminal.ansiGreen": "#9ECE6A",
@@ -39,7 +47,6 @@
     "terminal.ansiMagenta": "#BB9AF7",
     "terminal.ansiCyan": "#7DCFFF",
     "terminal.ansiWhite": "#DCDFE4",
-
     "terminal.ansiBrightBlack": "#565F89",
     "terminal.ansiBrightRed": "#F7768E",
     "terminal.ansiBrightGreen": "#9ECE6A",
@@ -48,10 +55,10 @@
     "terminal.ansiBrightMagenta": "#BB9AF7",
     "terminal.ansiBrightCyan": "#7DCFFF",
     "terminal.ansiBrightWhite": "#ACB0D0",
+    "tab.activeBorderTop": "#FFE81F",
 
-    "tab.activeBorderTop": "#FFE81F"
+
   },
-
   // 🔠 Fonts - Fira Code first everywhere
   "editor.fontFamily": "'Fira Code', 'JetBrains Mono', 'IBM Plex Mono', Consolas, 'Courier New', monospace",
   "editor.fontSize": 14,
@@ -59,7 +66,6 @@
   "editor.fontLigatures": true,
   "debug.console.fontFamily": "'Fira Code', 'JetBrains Mono', 'SF Mono', Menlo, Monaco, monospace",
   "terminal.integrated.fontFamily": "'Fira Code', 'IBM Plex Mono', 'SF Mono', Menlo, Monaco, monospace",
-
   // 📝 Editor Behavior
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -93,19 +99,15 @@
       }
     ]
   },
-
   // 💾 File Management
   "files.trimTrailingWhitespace": true,
   "explorer.confirmDelete": false,
   "window.confirmSaveUntitledWorkspace": false,
-
   // 🛠️ Terminal
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.smoothScrolling": true,
-
   // 🔍 Search
   "search.seedOnFocus": true,
-
   // 📁 File Nesting
   "explorer.fileNesting.patterns": {
     "pubspec.yaml": ".flutter-plugins, .packages, .dart_tool, .flutter-plugins-dependencies, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml, all_lint_rules.yaml",
@@ -113,12 +115,10 @@
     "readme.*": "authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md",
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart,$(capture).gr.dart"
   },
-
   // ⚡ Format & Organize Imports on Save
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-
   // ⚙️ Formatter Per Language
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
@@ -144,12 +144,10 @@
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
-
   // 🐹 Go-Specific Settings
   "go.formatTool": "goimports",
   "go.lintOnSave": "package",
   "go.vetOnSave": "package",
-
   // 📚 TS / JS
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -165,7 +163,6 @@
   "typescript.format.semicolons": "remove",
   "javascript.format.semicolons": "remove",
   "javascript.preferGoToSourceDefinition": true,
-
   // 🔍 Navigation
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleDeclarations": "goto",
@@ -174,24 +171,19 @@
   "editor.gotoLocation.multipleTypeDefinitions": "goto",
   "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.peekImplementation",
   "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.peekImplementation",
-
   // 🧪 Experimental / AI Features (disabled)
   "editor.experimental.asyncTokenization": false,
   "editor.experimental.preferTreeSitter.typescript": false,
   "editor.aiStats.enabled": false,
   "chat.agent.enabled": false,
   "chat.disableAIFeatures": true,
-
   // 📦 Extensions
   "extensions.ignoreRecommendations": true,
-
   // 💡 Notebook
   "notebook.formatOnSave.enabled": true,
   "notebook.formatOnCellExecution": true,
-
   // 🌐 Live Server
   "liveServer.settings.donotVerifyTags": true,
-
   // 🧠 Sync
   "settingsSync.ignoredSettings": []
 }
