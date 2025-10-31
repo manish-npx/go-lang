@@ -6,7 +6,7 @@
   ],
   // 🖼️ UI and Themes
   "workbench.colorTheme": "Tokyo Night AltSynt",
-  "workbench.iconTheme": "catppuccin-macchiato",
+  "workbench.iconTheme": "atom-file-icon-with-jetbrains",
   "workbench.productIconTheme": "el-vsc-v1-icons",
   "workbench.activityBar.location": "top",
   "workbench.editor.editorActionsLocation": "titleBar",
